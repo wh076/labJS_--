@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 8</title>
+</head>
+<body>
+    <script>
+        let count = prompt('Введите количество пунктов списка:');
+        
+        let ul = document.createElement('ul');
+        
+        for (let i = 0; i < count; i++) {
+            let content = prompt('Введите содержимое пункта:');
+            let li = document.createElement('li');
+            li.textContent = content;
+            ul.appendChild(li);
+        }
+        
+        document.body.appendChild(ul);
+    </script>
+</body>
+</html>

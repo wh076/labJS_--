@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 4</title>
+</head>
+<body>
+    <form name="search">
+        <label>Search the site:
+            <input type="text" name="search">
+        </label>
+        <input type="submit" value="Search!">
+    </form>
+
+    <hr>
+
+    <form name="search-person">
+        Search the visitors:
+        <table id="age-table">
+            <tbody>
+                <tr>
+                    <td>Age:</td>
+                    <td id="age-list">
+                        <label>
+                            <input type="radio" name="age" value="young">less than 18
+                        </label>
+                        <label>
+                            <input type="radio" name="age" value="mature">18-50
+                        </label>
+                        <label>
+                            <input type="radio" name="age" value="senior">more than 50
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Additionally:</td>
+                    <td>
+                        <input type="text" name="info[0]">
+                        <input type="text" name="info[1]">
+                        <input type="text" name="info[2]">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Search!">
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        let output = document.getElementById('output');
+        
+        // 1. Таблица с id="age-table"
+        let ageTable = document.getElementById('age-table');
+        output.innerHTML += "<p>1. Таблица найдена</p>";
+        
+        // 2. Все элементы label внутри этой таблицы (их три)
+        let labelsInTable = ageTable.querySelectorAll('label');
+        output.innerHTML += "<p>2. Количество label внутри таблицы: " + labelsInTable.length + "</p>";
+        
+        // 3. Первый td в этой таблице (со словом «Age»)
+        let firstTd = ageTable.querySelector('td');
+        output.innerHTML += "<p>3. Первый td: " + firstTd.textContent + "</p>";
+        
+        // 4. Форма form с именем name="search"
+        let searchForm = document.forms.search;
+        output.innerHTML += "<p>4. Форма search найдена</p>";
+        
+        // 5. Первый input в этой форме
+        let firstInput = searchForm.querySelector('input');
+        output.innerHTML += "<p>5. Первый input: " + firstInput.getAttribute('type') + "</p>";
+        
+        // 6. Последний input в этой форме
+        let inputsInForm = searchForm.querySelectorAll('input');
+        let lastInput = inputsInForm[inputsInForm.length - 1];
+        output.innerHTML += "<p>6. Последний input: " + lastInput.getAttribute('type') + "</p>";
+    </script>
+</body>
+</html>

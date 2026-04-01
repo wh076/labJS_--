@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="style.css">
+    <title>Лицемер (с)</title>
+</head>
+<body>
+    <script>
+        // a. Создание разметки через createElement
+        const header = document.createElement('header');
+        const main = document.createElement('main');
+        main.className = 'content';
+        const aside = document.createElement('aside');
+        const section = document.createElement('section');
+        const headerDiv = document.createElement('div');
+        headerDiv.className = 'header-d';
+        headerDiv.textContent = 'Выберите лицо, которое нравится вам больше остальных:';
+        const displayDiv = document.createElement('div');
+        displayDiv.className = 'display';
+        
+        section.appendChild(headerDiv);
+        section.appendChild(displayDiv);
+        main.appendChild(aside);
+        main.appendChild(section);
+        document.body.appendChild(header);
+        document.body.appendChild(main);
+        
+        // c. Функция генерации случайных имен
+        const names = ['Александр', 'Дмитрий', 'Максим', 'Иван', 'Анна', 'Екатерина', 'Мария', 'Ольга', 'Сергей', 'Алексей'];
+        const surnames = ['Иванов', 'Петров', 'Сидоров', 'Смирнов', 'Кузнецов', 'Попов', 'Васильев', 'Соколов', 'Михайлов', 'Новиков'];
+        
+        function getRandomName() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            const surname = surnames[Math.floor(Math.random() * surnames.length)];
+            return `${name} ${surname}`;
+        }
+        
+        // b. Создание и добавление карточек
+        let count = 0;
+        
+        const timer = setInterval(() => {
+            if (count >= 6) {
+                clearInterval(timer);
+                return;
+            }
+            
+            count++;
+            
+            const card = document.createElement('div');
+            card.className = 'card';
+            
+            const img = document.createElement('img');
+            img.src = `https://thispersondoesnotexist.com/?${count}`;
+            img.alt = 'Avatar';
+            
+            const desc = document.createElement('div');
+            desc.className = 'description';
+            
+            const p = document.createElement('p');
+            p.textContent = getRandomName();
+            
+            desc.appendChild(p);
+            card.appendChild(img);
+            card.appendChild(desc);
+            displayDiv.appendChild(card);
+        }, 2000);
+    </script>
+</body>
+</html>
