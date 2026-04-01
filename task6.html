@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 6</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <a name="list">the list</a>
+    <ul>
+        <li><a href="http://google.com">http://google.com</a></li>
+        <li><a href="/tutorial">/tutorial.html</a></li>
+        <li><a href="/local/path">local/path</a></li>
+        <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+        <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+        <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+    </ul>
+
+    <script>
+        let links = document.querySelectorAll('a');
+        for (let i = 0; i < links.length; i++) {
+            let href = links[i].getAttribute('href');
+            
+            if (href.indexOf('://') !== -1 && href.indexOf('http://internal.com') !== 0) {
+                links[i].style.color = 'orange';
+            }
+        }
+        if (links[0]) links[0].style.color = 'yellow';
+        if (links[3]) links[3].style.color = 'yellow';
+        if (links[4]) links[4].style.color = 'yellow';
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div>Пользователи:</div>
+    <ul>
+        <li>Джон</li>
+        <li>Пит</li>
+    </ul>
+
+    <script>
+        // получить элемент <div>
+        let divElement = document.querySelector('div');
+        console.log(divElement);
+        
+        // получить <ul>
+        let ulElement = document.querySelector('ul');
+        console.log(ulElement);
+        
+        // получить второй <li> (с именем Пит)
+        let secondLi = document.querySelectorAll('li')[1];
+        console.log(secondLi);
+        
+        // альтернативные способы:
+        // let divElement = document.getElementsByTagName('div')[0];
+        // let ulElement = document.getElementsByTagName('ul')[0];
+        // let secondLi = document.getElementsByTagName('li')[1];
+    </script>
+</body>
+</html>
