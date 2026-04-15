@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иванов Иван</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .salary-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: inline-block;
+            width: 80px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input[type="number"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 200px;
+        }
+        
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
+        .months-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .result-group {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        
+        .result-group label {
+            width: 150px;
+        }
+        
+        #averageSalary {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .currency {
+            margin-left: 5px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="salary-form">
+        <h2>Расчёт средней зарплаты</h2>
+        
+        <form id="salaryForm">
+            <div class="months-container">
+                <div class="form-group">
+                    <label for="january">Январь:</label>
+                    <input type="number" id="january" value="300" min="0" step="0.01">
+                    <span class="currency">руб.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="february">Февраль:</label>
+                    <input type="number" id="february" value="200" min="0" step="0.01">
+                    <span class="currency">руб.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="march">Март:</label>
+                    <input type="number" id="march" value="500" min="0" step="0.01">
+                    <span class="currency">руб.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="april">Апрель:</label>
+                    <input type="number" id="april" value="250" min="0" step="0.01">
+                    <span class="currency">руб.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="may">Май:</label>
+                    <input type="number" id="may" value="350" min="0" step="0.01">
+                    <span class="currency">руб.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="june">Июнь:</label>
+                    <input type="number" id="june" value="500" min="0" step="0.01">
+                    <span class="currency">руб.</span>
+                </div>
+            </div>
+            
+            <div class="result-group">
+                <div class="form-group">
+                    <label for="averageSalary">Средняя зарплата:</label>
+                    <input type="text" id="averageSalary" readonly value="350">
+                    <span class="currency">руб.</span>
+                </div>
+            </div>
+            
+            <button type="button" id="calculateBtn">Вычислить</button>
+        </form>
+    </div>
+
+    <script>
+        // Получаем ссылки на все поля ввода зарплат
+        const januaryInput = document.getElementById('january');
+        const februaryInput = document.getElementById('february');
+        const marchInput = document.getElementById('march');
+        const aprilInput = document.getElementById('april');
+        const mayInput = document.getElementById('may');
+        const juneInput = document.getElementById('june');
+        
+        // Получаем ссылку на поле для вывода средней зарплаты
+        const averageSalaryInput = document.getElementById('averageSalary');
+        
+        // Получаем ссылку на кнопку
+        const calculateButton = document.getElementById('calculateBtn');
+        
+        // Функция для вычисления средней зарплаты
+        function calculateAverageSalary() {
+            // Получаем значения из всех полей и преобразуем в числа
+            const january = Number(januaryInput.value) || 0;
+            const february = Number(februaryInput.value) || 0;
+            const march = Number(marchInput.value) || 0;
+            const april = Number(aprilInput.value) || 0;
+            const may = Number(mayInput.value) || 0;
+            const june = Number(juneInput.value) || 0;
+            
+            // Вычисляем сумму всех зарплат
+            const sum = january + february + march + april + may + june;
+            
+            // Вычисляем среднее значение
+            const average = sum / 6;
+            
+            // Округляем до двух знаков
+            const roundedAverage = Math.round(average * 100) / 100;
+            
+            // Выводим результат в поле
+            averageSalaryInput.value = roundedAverage;
+        }
+        
+        // Добавляем обработчик события на кнопку
+        calculateButton.addEventListener('click', calculateAverageSalary);
+        
+        // Вычисляем среднее при загрузке страницы чтобы значение соответствовало значениям по умолчанию
+        window.addEventListener('load', calculateAverageSalary);
+    </script>
+
+</body>
+</html>

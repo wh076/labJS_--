@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 заданий по JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .task {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        #text {
+            padding: 15px;
+            background-color: #e3f2fd;
+            border: 2px solid #2196F3;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        #coordDisplay {
+            padding: 10px;
+            background-color: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>5 заданий по JavaScript</h1>
+    <p>Простые решения без сложных конструкций</p>
+
+    <div class="task">
+        <h3>Задание 1: Скрыть элемент div</h3>
+        <p>При нажатии на кнопку элемент с id="text" исчезнет.</p>
+        <button id="hideButton">Скрыть текст</button>
+        <div id="text">исчезнет при нажатии на кнопку.</div>
+    </div>
+
+    <div class="task">
+        <h3>Задание 2: Кнопка скрывает саму себя</h3>
+        <p>исчезла</p>
+        <button id="selfHideButton">Я исчезну при нажатии</button>
+    </div>
+
+    <div class="task">
+        <h3>Задание 3: Координаты нажатия мыши</h3>
+        <p>координаты отобразятся ниже:</p>
+        <div id="coordDisplay">Координаты: жду клика...</div>
+    </div>
+
+    <div class="task">
+        <h3>Задание 4: Alert при клике по странице</h3>
+        <p>появится сообщение.</p>
+    </div>
+    
+    <div class="task">
+        <h3>Задание 5: Alert при изменении текста</h3>
+        <p>Начни печатать в поле ниже, появится сообщение об изменении текста.</p>
+        <input type="text" id="textInput" placeholder="Введи что-нибудь...">
+    </div>
+
+    <script>
+        // ЗАДАНИЕ 1
+        // Находим кнопку по её id
+        const hideButton = document.getElementById('hideButton');
+        // Находим элемент div по его id
+        const textElement = document.getElementById('text');
+        
+        // Добавляем обработчик события "клик" на кнопку
+        hideButton.addEventListener('click', function() {
+            // Устанавливаем стиль display: none - элемент исчезает
+            textElement.style.display = 'none';
+        });
+
+
+        // ЗАДАНИЕ 2 
+        // Находим кнопку по её id
+        const selfHideButton = document.getElementById('selfHideButton');
+        
+        // Добавляем обработчик события "клик" на кнопку
+        selfHideButton.addEventListener('click', function() {
+            // this ссылается на элемент, на котором произошло событие (на эту кнопку)
+            this.style.display = 'none';
+        });
+
+
+        // ЗАДАНИЕ 3
+        // Вывод координат нажатия кнопки мыши
+        
+        // Находим элемент, куда будем выводить координаты
+        const coordDisplay = document.getElementById('coordDisplay');
+        
+        // Добавляем обработчик события "mousedown" (нажатие кнопки мыши) на весь документ
+        document.addEventListener('mousedown', function(event) {
+            // event.clientX - координата X курсора относительно окна браузера
+            // event.clientY - координата Y курсора относительно окна браузера
+            coordDisplay.textContent = 'Координаты: X = ' + event.clientX + ', Y = ' + event.clientY;
+        });
+
+
+        // ЗАДАНИЕ 4
+        // Alert при клике по странице
+        
+        // Создаём простую функцию, которая вызывает alert
+        function showClickMessage() {
+            alert('Был щелчок!');
+        }
+        
+        // Добавляем обработчик события "click" на весь документ
+        document.addEventListener('click', showClickMessage);
+
+
+        // ЗАДАНИЕ 5
+        // Alert при изменении текста в текстовом поле
+        
+        // Находим поле ввода по его id
+        const textInput = document.getElementById('textInput');
+        
+        // Добавляем обработчик события "input" (срабатывает при любом изменении текста)
+        textInput.addEventListener('input', function() {
+            alert('Текст был изменен!!!');
+        });
+
+    </script>
+
+</body>
+</html>
