@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание №2 - XHR Запросы</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Задание №2 - Работа с XMLHttpRequest</h1>
+        
+        <div class="buttons-panel">
+            <h3>Исходные запросы (последовательные XHR):</h3>
+            <button id="basic-xhr-btn">Выполнить запросы</button>
+            
+            <h3>Запросы с callback:</h3>
+            <button id="callback-xhr-btn">Выполнить запросы</button>
+            
+            <h3>Запросы через Promise:</h3>
+            <button id="promise-xhr-btn">Выполнить запросы</button>
+            
+            <h3>Запросы через async/await:</h3>
+            <button id="async-xhr-btn">Выполнить запросы</button>
+        </div>
+
+        <div id="results">
+            <h3>Результаты запросов:</h3>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <script src="js/task2.js"></script>
+</body>
+</html>
