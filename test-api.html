@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Тестирование API</h1>
+    
+    <h2>Тест получения имени:</h2>
+    <button onclick="testNameAPI1()">Тест randomuser.me</button>
+    <button onclick="testNameAPI2()">Тест namefake.com</button>
+    <div id="name-result"></div>
+    
+    <h2>Тест фактов о животных:</h2>
+    <button onclick="testCatFact()">Факт о кошках</button>
+    <button onclick="testDogFact()">Факт о собаках</button>
+    <button onclick="testFoxFact()">Факт о лисах</button>
+    <div id="fact-result"></div>
+    
+    <h2>Тест изображений:</h2>
+    <button onclick="testCatImage()">Изображение кошки</button>
+    <button onclick="testDogImage()">Изображение собаки</button>
+    <button onclick="testFoxImage()">Изображение лисы</button>
+    <div id="image-result"></div>
+
+    <script>
+        async function testNameAPI1() {
+            const result = document.getElementById('name-result');
+            result.innerHTML = 'Загрузка...';
+            try {
+                const response = await fetch('https://randomuser.me/api/');
+                const data = await response.json();
+                const name = data.results[0].name.first;
+                result.innerHTML = `<span class="success">✓ Успех! Имя: ${name}</span>`;
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Ошибка: ${error.message}</span>`;
+            }
+        }
+        
+        async function testNameAPI2() {
+            const result = document.getElementById('name-result');
+            result.innerHTML = 'Загрузка...';
+            try {
+                const response = await fetch('https://api.namefake.com/');
+                const data = await response.json();
+                result.innerHTML = `<span class="success">✓ Успех! Имя: ${data.name}</span>`;
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Ошибка: ${error.message}</span>`;
+            }
+        }
+        
+        async function testCatFact() {
+            const result = document.getElementById('fact-result');
+            result.innerHTML = 'Загрузка...';
+            try {
+                const response = await fetch('https://catfact.ninja/fact');
+                const data = await response.json();
+                result.innerHTML = `<span class="success">✓ Успех! Факт: ${data.fact}</span>`;
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Ошибка: ${error.message}</span>`;
+            }
+        }
+        
+        async function testDogFact() {
+            const result = document.getElementById('fact-result');
+            result.innerHTML = 'Загрузка...';
+            try {
+                const response = await fetch('https://dog-api.kinduff.com/api/facts');
+                const data = await response.json();
+                result.innerHTML = `<span class="success">✓ Успех! Факт: ${data.facts[0]}</span>`;
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Ошибка: ${error.message}</span>`;
+            }
+        }
+        
+        function testFoxFact() {
+            const result = document.getElementById('fact-result');
+            const facts = [
+                'Foxes are members of the dog family.',
+                'A female fox is called a vixen.',
+                'Foxes have whiskers on their legs and face to help them navigate.'
+            ];
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            result.innerHTML = `<span class="success">✓ Локальный факт: ${randomFact}</span>`;
+        }
+        
+        async function testCatImage() {
+            const result = document.getElementById('image-result');
+            result.innerHTML = 'Загрузка...';
+            try {
+                const response = await fetch('https://api.thecatapi.com/v1/images/search');
+                const data = await response.json();
+                result.innerHTML = `<span class="success">✓ Успех!</span><br><img src="${data[0].url}" width="300">`;
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Ошибка: ${error.message}</span>`;
+            }
+        }
+        
+        async function testDogImage() {
+            const result = document.getElementById('image-result');
+            result.innerHTML = 'Загрузка...';
+            try {
+                const response = await fetch('https://dog.ceo/api/breeds/image/random');
+                const data = await response.json();
+                result.innerHTML = `<span class="success">✓ Успех!</span><br><img src="${data.message}" width="300">`;
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Ошибка: ${error.message}</span>`;
+            }
+        }
+        
+        async function testFoxImage() {
+            const result = document.getElementById('image-result');
+            result.innerHTML = 'Загрузка...';
+            try {
+                const response = await fetch('https://randomfox.ca/floof/');
+                const data = await response.json();
+                result.innerHTML = `<span class="success">✓ Успех!</span><br><img src="${data.image}" width="300">`;
+            } catch (error) {
+                result.innerHTML = `<span class="error">✗ Ошибка: ${error.message}</span>`;
+            }
+        }
+    </script>
+</body>
+</html>

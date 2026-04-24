@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание №1 - Интересные факты о животных</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Лабораторная работа №8 - Использование API</h1>
+        
+        <!-- Экран приветствия -->
+        <div id="welcome-screen">
+            <h2>Добро пожаловать, <span id="user-name">незнакомец</span>!</h2>
+            <p>Ваше случайное имя: <strong id="random-name">Загрузка...</strong></p>
+            <button id="change-name-btn">Другое имя</button>
+            <button id="next-btn">Далее</button>
+        </div>
+
+        <!-- Экран выбора животного -->
+        <div id="animal-select-screen" style="display: none;">
+            <h2>Выберите животное:</h2>
+            <div class="animal-buttons">
+                <button class="animal-btn" data-animal="cat">Кошка</button>
+                <button class="animal-btn" data-animal="dog">Собака</button>
+                <button class="animal-btn" data-animal="fox">Лиса</button>
+            </div>
+        </div>
+
+        <!-- Экран с информацией о животном -->
+        <div id="animal-info-screen" style="display: none;">
+            <h2>Информация о животном</h2>
+            <div id="animal-content">
+                <img id="animal-image" src="" alt="Животное" referrerpolicy="no-referrer">
+                <p id="animal-fact">Загрузка факта...</p>
+                <p id="animal-fact-ru"></p>
+            </div>
+            <button id="back-btn">Назад к выбору</button>
+        </div>
+    </div>
+
+    <script src="js/task1.js"></script>
+</body>
+</html>

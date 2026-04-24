@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание №3 - Таблица людей</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Задание №3 - Работа с таблицей данных</h1>
+        
+        <div class="controls">
+            <button id="load-btn">Загрузить данные</button>
+            
+            <div class="filter-controls">
+                <label>Фильтр по полу:</label>
+                <select id="gender-filter">
+                    <option value="all">Все</option>
+                    <option value="male">Мужчины</option>
+                    <option value="female">Женщины</option>
+                </select>
+            </div>
+            
+            <button id="add-btn">Добавить запись</button>
+            <button id="delete-selected-btn">Удалить выбранные</button>
+        </div>
+
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="select-all"></th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Возраст</th>
+                    <th>Пол</th>
+                    <th>Адрес</th>
+                    <th>Телефон</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Данные будут добавлены динамически -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Модальное окно для добавления/редактирования -->
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modal-title">Добавить запись</h2>
+            <form id="edit-form">
+                <input type="hidden" id="edit-index">
+                <input type="text" id="edit-firstname" placeholder="Имя" required>
+                <input type="text" id="edit-lastname" placeholder="Фамилия" required>
+                <input type="number" id="edit-age" placeholder="Возраст" required>
+                <select id="edit-gender" required>
+                    <option value="male">Мужской</option>
+                    <option value="female">Женский</option>
+                </select>
+                <input type="text" id="edit-address" placeholder="Адрес" required>
+                <input type="text" id="edit-phone" placeholder="Телефон" required>
+                <button type="submit">Сохранить</button>
+                <button type="button" id="cancel-btn">Отмена</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/task3.js"></script>
+</body>
+</html>
